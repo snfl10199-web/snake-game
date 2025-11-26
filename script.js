@@ -140,6 +140,14 @@ function setDir(x,y){
 
 // 모바일 컨트롤: 제거됨 (HTML에서 버튼 삭제)
 
+// 재시작 버튼 처리
+const restartBtn = document.getElementById('restart-btn');
+if(restartBtn){
+  restartBtn.addEventListener('click', ()=>{
+    reset();
+  });
+}
+
 // 시작
 reset();
 requestAnimationFrame(frame);
