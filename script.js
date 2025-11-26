@@ -24,7 +24,7 @@ function reset(){
   gameOver = false;
   speed = 8;
   updateScore();
-  statusEl.textContent = '방향키로 조작하세요. R키로 재시작';
+  statusEl.textContent = '방향키로 조작하세요.';
 }
 
 function randPos(){
@@ -33,7 +33,7 @@ function randPos(){
 
 function gameLoop(){
   if(gameOver){
-    statusEl.textContent = '게임 오버! R키로 재시작';
+    statusEl.textContent = '게임 오버!';
     return;
   }
   requestAnimationFrame(gameLoop);
@@ -130,7 +130,6 @@ window.addEventListener('keydown', e=>{
   if(e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') setDir(0,1);
   if(e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') setDir(-1,0);
   if(e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') setDir(1,0);
-  if(e.key === 'r' || e.key === 'R'){ reset(); }
 });
 
 function setDir(x,y){
@@ -139,17 +138,7 @@ function setDir(x,y){
   nextDir = {x,y};
 }
 
-// 모바일용 버튼
-['up','down','left','right'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(!el) return;
-  el.addEventListener('click', ()=>{
-    if(id==='up') setDir(0,-1);
-    if(id==='down') setDir(0,1);
-    if(id==='left') setDir(-1,0);
-    if(id==='right') setDir(1,0);
-  });
-});
+// 모바일 컨트롤: 제거됨 (HTML에서 버튼 삭제)
 
 // 시작
 reset();
